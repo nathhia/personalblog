@@ -30,7 +30,7 @@ export default {
 
 <style>
   .footer-position{
-    position:fixed;
+    position: fixed;
     bottom: 0px;
     padding: 0px 3px;
     
