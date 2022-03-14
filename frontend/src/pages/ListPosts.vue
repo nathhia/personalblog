@@ -1,13 +1,13 @@
 <template>
     <div>
-        Movies Page
+        List Posts
     </div>
 </template>
 
 <script>
 import router from "../router";
 export default {
-  name: "Movies",
+  name: "ListPosts",
   mounted() {
     this.checkLoggedIn();
   },
