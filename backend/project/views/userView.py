@@ -37,23 +37,22 @@ class UserView(ModelViewSet):
         data = json.loads(request.body)
         data = json.loads(request.body.decode("utf-8"))
         name = data.get('name', None)
+        email = data.get('email', None)
+        username = data.get('username', None)
 
         checkUsername = True
         try:
             User.objects.get(username=username)
         except:
-            username = data.get('username', None)
             checkUsername = False
-        if(checkUsername == True): return JsonResponse(data={"user_already_exists"}, status=status.HTTP_401_UNAUTHORIZED)
+        if(checkUsername == True): return JsonResponse(data={"mensage": "username_already_exists"}, status=status.HTTP_401_UNAUTHORIZED, safe=False)
 
-        
         checkEmail = True
         try:
             User.objects.get(email=email)
         except:
-            email = data.get('email', None)
             checkEmail = False
-        if(checkEmail == True): return JsonResponse(data={"email_already_exists"}, status=status.HTTP_401_UNAUTHORIZED)
+        if(checkEmail == True): return JsonResponse(data={"mensage": "email_already_exists"}, status=status.HTTP_401_UNAUTHORIZED, safe=False)
 
         sex = data.get('sex', None)
         birthdate = data.get('birthdate', None)
